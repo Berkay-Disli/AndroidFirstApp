@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.berkaydisli.landmarkprojectjava.databinding.ActivityDetailsBinding;
 import com.berkaydisli.landmarkprojectjava.databinding.ActivityMainBinding;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         landmarkArrayList.add(emirgan);
         landmarkArrayList.add(cekmekoy);
         landmarkArrayList.add(atasehir);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LandmarkAdaptor landmarkAdaptor = new LandmarkAdaptor(landmarkArrayList);
+        binding.recyclerView.setAdapter(landmarkAdaptor);
 
         /*
         ArrayAdapter arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,

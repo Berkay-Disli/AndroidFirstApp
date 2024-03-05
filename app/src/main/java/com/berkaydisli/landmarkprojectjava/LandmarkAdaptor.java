@@ -1,5 +1,6 @@
 package com.berkaydisli.landmarkprojectjava;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,15 @@ public class LandmarkAdaptor extends RecyclerView.Adapter<LandmarkAdaptor.Landma
     @Override
     public void onBindViewHolder(@NonNull LandmarkHolder holder, int position) {
         holder.binding.recyclerViewTextView.setText(landmarkArrayList.get(position).name);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), DetailsActivity.class);
+                intent.putExtra("landmark", landmarkArrayList.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
